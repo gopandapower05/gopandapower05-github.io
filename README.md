@@ -1,2 +1,2 @@
-# gopandapower05-github.io
-Chloe's Personal website
+# Chloe's Personal Website
+URL : https://gopandapower05.github.io
