@@ -1,3 +1,9 @@
+/* 
+hot pink: #FE65B7
+Corn: #E9C904
+Grass: #8FC334
+Cyan: #62Edd6
+*/
 h1{
     font-size: 30px;
     color: rgb(255, 0, 0);
@@ -45,4 +51,12 @@ span{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: underline;
     text-align: center;
+}
+body{
+    background-color: #E9C904 ;}
+header{
+    background-color: #8FC33A;
+}
+nav{
+    background-color: #FE65B7;
 }
