@@ -23,9 +23,8 @@ p{
     color: rgb(153, 0, 255);
     line-height: 3;
     font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
     text-align: left;
-    border-style: groove;
+   
 }
 span{ 
     font-size: 30px;
