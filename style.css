@@ -10,13 +10,7 @@ h1{
     line-height: 1; 
     font-family: fantasy;
     font-weight: 100;
-    border-style: double;
-    border-width: thick;
-    border-color: rgb(153, 0, 255);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 200px;
-
+   
 }
 h2{
     font-size: 20px;
@@ -67,4 +61,11 @@ header{
 }
 nav{
     background-color: #FE65B7;
+}
+
+.bold {
+    text-align: center;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
 }
