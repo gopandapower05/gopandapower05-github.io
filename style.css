@@ -56,15 +56,18 @@ span{
 body{
     background-color: #E9C904 ;}
 header{
-    background-color: #8FC33A;
+    background-color: rgb(5, 5, 5);
 }
 nav{
-    background-color: #FE65B7;
+    background-color: rgba(247, 8, 8, 0);
 }
 
 .bold {
     text-align: center;
     font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS' sans-serif;
     text-decoration: underline;
+}
+#myCanvas {
+    background-color: white;
 }
