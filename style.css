@@ -70,4 +70,6 @@ nav{
 }
 #myCanvas {
     background-color: white;
+    border-style: solid; 
+    border-color: rgb(255, 252, 252);
 }
