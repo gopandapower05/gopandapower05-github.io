@@ -1,7 +1,6 @@
 var canvas; 
 var ctx;
 var unit = 5;
-window.onload = init;
 function yellow(){
     ctx.fillStyle = 'rgb(228,199,59)';
     ctx.fillRect(35*unit,9*unit,8*unit,2*unit);
@@ -102,9 +101,7 @@ function grey(){
     ctx.fillRect(35*unit,27*unit,2*unit,2*unit);
 }
 
-function init(){
-    canvas = document.getElementById("myCanvas");
-    ctx = canvas.getContext("2d");
+function drawStuart(){
     yellow();
     blue();
     black();
