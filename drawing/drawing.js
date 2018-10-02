@@ -1,6 +1,6 @@
 var canvas; 
 var ctx;
-var unit = 10;
+var unit = 5;
 window.onload = init; // When the window loads, run the init function
 function star() {
     ctx.beginPath();
@@ -20,17 +20,19 @@ function star() {
 function init() {
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext("2d");
-     // ctx.font= [font-style] [font-weight][font-size][font-family]
-    ctx.beginPath(); //code that comes before drawing a line.
-    ctx.strokeStyle = "red";
-    ctx.fillStyle = "red";
-    ctx.stroke(); //stroking the line
-    star();
+    //  // ctx.font= [font-style] [font-weight][font-size][font-family]
+    // ctx.beginPath(); //code that comes before drawing a line.
+    // ctx.strokeStyle = "red";
+    // ctx.fillStyle = "red";
+    // ctx.stroke(); //stroking the line
+    // star();
     
-    ctx.fillStyle = "white";
-    ctx.save();
-    ctx.translate(5*unit,5*unit);
-    ctx.fillRect(0,0,unit,unit);
-    ctx.restore();
+    // ctx.fillStyle = "white";
+    // ctx.save();
+    // ctx.translate(5*unit,5*unit);
+    // ctx.fillRect(0,0,unit,unit);
+    // ctx.restore();
+    // drawGroundBlock();
+    drawGroundBlocks(7,2);
 
 }

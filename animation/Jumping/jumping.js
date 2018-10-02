@@ -5,9 +5,13 @@ var unit = 25;
 var time= 0;
 // 1. New variable for animation
 //2. Position of the animation
-var positionX= 0;
+var positionX = 0;
+var positionY = 12*unit;
+var isJumping = true;
 const timeLoop = 30;
 const speed = 3;
+const jumpSpeed = 3;
+
 window.onload = init; //when the window loads run the init function
 
 function init(){
@@ -29,7 +33,11 @@ function animationLoop(timeStamp){
     drawBackground();
     walkingAnimation();
     changePositionX();
+    changePositionY();
     changeTime();
+    // changeJump();
+
+
     positionX += 1;
     //1-. Cal this function again (Repeat from step 6)
     requestId = requestAnimationFrame(animationLoop);
@@ -47,11 +55,15 @@ function changeTime(){
 }
 function walkingAnimation(){
     ctx.save();
-    ctx.translate(positionX,12*unit);
+    ctx.translate(positionX,positionY);
     ctx.scale(0.3,0.3);
-    if ((0<=time)&&(time<=15)){
-        drawLuigi2();
-    }else if ((15<= time)&&(time<=30)){
+    if (isJumping == true){
+        if ((0<=time)&&(time<=15)){
+            drawLuigi2();
+        }else if ((15<= time)&&(time<=30)){
+            drawLuigi3();
+        }
+    }else if (isJumping == false){
         drawLuigi3();
     }
     ctx.restore();
@@ -73,4 +85,23 @@ function drawBackground(){
     ctx.scale(0.1,0.1);
     drawGroundBlocks(15,2);
     ctx.restore();
+}
+function changePositionY(){
+    const jumpPosition = canvas.width/4;
+    const peakPosition = canvas.width/2;
+    const landPosition = canvas.width*3/4;
+    if ((jumpPosition <= positionX) && (positionX < peakPosition)){
+        positionY -= jumpSpeed;
+    }else if ((peakPosition <= positionX) && (positionX < landPosition)){
+        positionY += jumpSpeed;
+    }
+    
+}
+
+function changeJump(){
+    if ((jumpPosition > positionX) && (landPosition > positionX)){
+        isJumping = true;
+    }else {
+        isJumping = false;
+    }
 }

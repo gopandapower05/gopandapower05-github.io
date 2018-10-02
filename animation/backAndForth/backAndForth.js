@@ -27,7 +27,7 @@ function startAnimation(){
 //6. create startAnimation function
 function animationLoop(timeStamp){
     //7. Clears everything in canvas
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawIceBlocksBackground();
     drawCharacter();
     changeFacingDirection();
     changePositionX();
@@ -70,4 +70,14 @@ function changePositionX(){
     }else if (isFacingRight == false){
         positionX -= speed;
     }
+}
+
+function drawIceBlocksBackground(){
+    ctx.save();
+    ctx.translate(0,39*unit);
+    ctx.scale(0.5,0.5);
+    drawIceBlocks(7,2);
+    ctx.restore();
+    ctx.fillStyle= "blue";
+    ctx.fillRect(0,0,50*unit,39*unit);
 }
