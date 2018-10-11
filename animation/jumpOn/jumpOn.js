@@ -9,8 +9,12 @@ var positionX = 0;
 var positionY = 12*unit;
 var isJumping = true;
 const timeLoop = 15;
-const speed = 10;
-const jumpSpeed = 3;
+const speed = 2;
+const jumpSpeed = 7;
+const jumpPosition = 2*unit
+const brickPosition = 4*unit
+const fallPosition = 13*unit
+const landPosition = 15*unit
 
 window.onload = init; //when the window loads run the init function
 
@@ -30,12 +34,13 @@ function startAnimation(){
 function animationLoop(timeStamp){
     //7. Clears everything in canvas
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    drawBackground();
+    drawBackground2();
     walkingAnimation();
     changePositionX();
     changePositionY();
     changeTime();
     changeJump();
+    drawRuler(1);
     //1-. Cal this function again (Repeat from step 6)
     requestId = requestAnimationFrame(animationLoop);
 
@@ -74,31 +79,41 @@ function changePositionX(){
         positionX = -10*unit;
     }
 }
-function drawBackground(){
-    ctx.fillStyle = "green";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.save();
-    ctx.translate(0,17*unit);
-    ctx.scale(0.1,0.1);
-    drawGroundBlocks(15,2);
-    ctx.restore();
-}
+
 function changePositionY(){
-    const jumpPosition = canvas.width/4;
-    const peakPosition = canvas.width/2;
-    const landPosition = canvas.width*3/4;
-    if ((jumpPosition <= positionX) && (positionX < peakPosition)){
+    if ((jumpPosition <= positionX) && (positionX < brickPosition)){
         positionY -= jumpSpeed;
-    }else if ((peakPosition < positionX) && (positionX <= landPosition)){
+    }else if ((fallPosition < positionX) && (positionX <= landPosition)){
         positionY += jumpSpeed;
     }
     
 }
 
 function changeJump(){
-    if ((canvas.width/3 <= positionX) && (positionX <= 2*canvas.width/3)){
+    if ((jumpPosition <= positionX) && (positionX <brickPosition)){
+        isJumping = true;
+    }else if ((fallPosition < positionX) && (positionX <= landPosition)) {
         isJumping = true;
     }else {
         isJumping = false;
     }
 }
+
+function drawBackground2(){
+    ctx.fillStyle = "green";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.save();
+    ctx.translate(6*unit,10*unit);
+    ctx.scale(0.1,0.1);
+    drawBrickBlocks(5,1);
+    ctx.restore();
+    ctx.save();
+    ctx.translate(0,17*unit);
+    ctx.scale(0.1,0.1);
+    drawGroundBlocks(15,2);
+    ctx.restore();
+}
+
+
+
+ 
