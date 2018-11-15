@@ -4,9 +4,16 @@ var unit = 3;
 var time= 0;
 // 1. New variable for animation
 var requestId;
-
+var positionX;
+var positionXG;
+var positionY;
+var positionYG 
 //2. Position of the animation
 var positionX= 0;
+const spped = ;
+const timeLoop = ;
+
+
 
 window.onload = init; //when the window loads run the init function
 
@@ -33,10 +40,18 @@ function animationLoop(timeStamp){
 }
 
 function drawBackground() {
+    ctx.fillStyle = "green" ;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
     ctx.save();
     ctx.translate(0,130*unit);
     drawGroundBlocks(11,5);
     ctx.restore();
-    ctx.fillStyle = green;
-    ctx.fillRect(canvas.width,canvas.height);
+}
+
+function changeTime(){
+    if (time <= timeloop){
+        time += 1;
+    } else{
+        time = 0;
+    }
 }
