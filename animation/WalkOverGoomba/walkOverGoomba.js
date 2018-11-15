@@ -1,6 +1,6 @@
 var canvas;
 var ctx;
-var unit = 25;
+var unit = 3;
 var time= 0;
 // 1. New variable for animation
 var requestId;
@@ -26,12 +26,17 @@ function startAnimation(){
 function animationLoop(timeStamp){
     //7. Clears everything in canvas
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    drawRuler(2);
+    ;
+    drawBackground();
     //1-. Cal this function again (Repeat from step 6)
     requestId = requestAnimationFrame(animationLoop);
 }
 
 function drawBackground() {
-    ctx.save;
-
+    ctx.save();
+    ctx.translate(0,130*unit);
+    drawGroundBlocks(11,5);
+    ctx.restore();
+    ctx.fillStyle = green;
+    ctx.fillRect(canvas.width,canvas.height);
 }
