@@ -10,8 +10,8 @@ var positionY;
 var positionYG 
 //2. Position of the animation
 var positionX= 0;
-const spped = ;
-const timeLoop = ;
+const spped = 3;
+const timeLoop = 20;
 
 
 
@@ -54,4 +54,8 @@ function changeTime(){
     } else{
         time = 0;
     }
+}
+
+function changePositionX(){
+    
 }
