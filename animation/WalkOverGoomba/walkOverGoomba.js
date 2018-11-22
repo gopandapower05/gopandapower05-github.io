@@ -4,19 +4,19 @@ var unit = 3;
 var time= 0;
 // 1. New variable for animation
 var requestId;
-var positionX;
+var positionX = 2*unit;
 var positionXG;
-var positionY;
-var positionYG 
+var positionY = 114*unit;
+var positionYG;
 //2. Position of the animation
 var positionX= 0;
 const spped = 3;
-const timeLoop = 20;
+const timeLoop = 20 ;
 
 
 
 window.onload = init; //when the window loads run the init function
-
+ 
 function init(){
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext("2d");
@@ -33,8 +33,14 @@ function startAnimation(){
 function animationLoop(timeStamp){
     //7. Clears everything in canvas
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ;
     drawBackground();
+    // changeTime();
+    ctx.save();
+    ctx.translate(positionX,positionY);
+    animateLuigi();
+    ctx.restore();
+    changePositionX();
+    drawRuler(10);
     //1-. Cal this function again (Repeat from step 6)
     requestId = requestAnimationFrame(animationLoop);
 }
@@ -49,7 +55,7 @@ function drawBackground() {
 }
 
 function changeTime(){
-    if (time <= timeloop){
+    if (time <= timeLoop){
         time += 1;
     } else{
         time = 0;
@@ -57,5 +63,17 @@ function changeTime(){
 }
 
 function changePositionX(){
-    
+    if (positionX > 165*unit) {
+        positionX =0;
+    }else {
+        positionX += 1;
+}
+
+function animateLuigi(){
+    ctx.save();
+    ctx.translate(positionX,positionY);
+    drawLuigi2();
+    ctx.restore;
+}
+
 }

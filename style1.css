@@ -1,0 +1,13 @@
+h1{
+    font-size: 30px;
+    color: rgb(255, 0, 0);
+    line-height: 1; 
+    font-family: fantasy;
+    font-weight: 100;
+}
+
+h2{
+    font-size: 20px;
+    color: rgb(245, 12, 255);
+    line-height: 2;
+}

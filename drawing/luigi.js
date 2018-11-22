@@ -13,7 +13,7 @@ function init(){
     
     ctx.restore();
     ctx.save();
-    ctx.translate(1*unit,1*unit);
+    ctx.translate(120*unit,1*unit);
     drawLuigi2();
     
     ctx.restore();
