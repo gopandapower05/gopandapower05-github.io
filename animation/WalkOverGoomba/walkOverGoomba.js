@@ -35,10 +35,7 @@ function animationLoop(timeStamp){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     drawBackground();
     // changeTime();
-    ctx.save();
-    ctx.translate(positionX,positionY);
     animateLuigi();
-    ctx.restore();
     changePositionX();
     drawRuler(10);
     //1-. Cal this function again (Repeat from step 6)
@@ -67,13 +64,14 @@ function changePositionX(){
         positionX =0;
     }else {
         positionX += 1;
+    }
 }
 
-function animateLuigi(){
+function animateLuigi() {
     ctx.save();
     ctx.translate(positionX,positionY);
     drawLuigi2();
-    ctx.restore;
+    ctx.restore();
 }
 
-}
+
