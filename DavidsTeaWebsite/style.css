@@ -23,3 +23,45 @@ p{
     font-weight: 100; 
 
 }
+#greenColor{
+    background-color: yellow;
+}
+
+.rectangle{
+    padding-top:40px;
+}
+section{
+    margin-top: 90px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.size{
+    width: 250px;
+    height: 250px;
+}
+.inner-container{
+    display: flex;
+    flex-direction: column;
+}
+#herbalColor{
+    background-color: aqua;
+}
+#matchaColor{
+    background-color: black;
+}
+#mateColor{
+    background-color: chartreuse;
+}
+#oolongColor{
+    background-color: blueviolet;
+}
+#puerhColor{
+    background-color: darkmagenta;
+}
+#rooibos{
+    background-color: dodgerblue;
+}
+#whiteColor{
+    background-color: cornsilk;
+}
