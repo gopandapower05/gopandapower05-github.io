@@ -45,22 +45,22 @@ section{
     flex-direction: column;
 }
 #herbalColor{
-    background-color: aqua;
+    background-color: tomato;
 }
 #matchaColor{
-    background-color: black;
+    background-color: darkgreen;
 }
 #mateColor{
-    background-color: chartreuse;
+    background-color: darkred;
 }
 #oolongColor{
-    background-color: blueviolet;
+    background-color: darkkhaki;
 }
 #puerhColor{
     background-color: darkmagenta;
 }
 #rooibos{
-    background-color: dodgerblue;
+    background-color: coral;
 }
 #whiteColor{
     background-color: cornsilk;
