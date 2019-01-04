@@ -30,12 +30,8 @@ p{
 .rectangle{
     padding-top:40px;
 }
-section{
-    margin-top: 90px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+
+
 .size{
     width: 250px;
     height: 250px;
