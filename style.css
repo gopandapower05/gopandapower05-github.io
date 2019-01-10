@@ -73,6 +73,7 @@ nav{
     flex-wrap: wrap;
     background-color: rgba(247, 8, 8, 0);
     font-size: 23px;
+    margin-bottom: 100px;
 }
 
 .bold {
@@ -102,4 +103,12 @@ footer{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+#myPanvas {
+    background-color: rgb(0, 0, 0);
+    border-style: solid; 
+    border-color: rgb(0, 0, 0);
+}
+section{
+    text-align: center;
 }
