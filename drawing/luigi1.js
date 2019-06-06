@@ -1,6 +1,9 @@
-function drawLuigi1(){
+function drawLuigi1(x,y){
+    ctx.save();
+    ctx.translate(x*unit,y*unit);
     head();
     bottom();
+    ctx.restore();
 }
 function head(){
     ctx.fillStyle = "rgb(0,255,0)";//green

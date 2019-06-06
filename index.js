@@ -1,29 +1,50 @@
-var canvas; 
+var canvas;
 var ctx;
-var unit = 10;
+var unit = 5;
+var requestId;
+var positionX = 0;
+var positionY = 0;
+var transparency = 0.0;
+var isPositive = true;
 window.onload = init;
-function init(){
+function init() {
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext("2d");
-    ctx.fillRect(0,0,500,500)
-    head();
+    // drawPanda(0,0,0.5);
+     startAnimation();
+    drawRuler(5);
 }
-function head(){
-    ctx.fillStyle = "rgb(0,0,0)";
-    ctx.fillRect(15*unit,15*unit,15*unit,unit);
-    ctx.fillRect(14*unit,16*unit,17*unit,unit);
-    ctx.fillRect(13*unit,17*unit,19*unit,unit);
-    ctx.fillRect(12*unit,18*unit,21*unit,unit);
-    ctx.fillRect(12*unit,19*unit,21*unit,unit);
-    ctx.fillRect(12*unit,20*unit,21*unit,unit);
-    ctx.fillRect(12*unit,21*unit,21*unit,unit);
-    ctx.fillRect(11*unit,22*unit,23*unit,unit);
-    ctx.fillRect(11*unit,23*unit,23*unit,unit);
-    ctx.fillRect(11*unit,24*unit,23*unit,unit);
-    ctx.fillRect(11*unit,25*unit,23*unit,unit);
-    ctx.fillRect(11*unit,26*unit,23*unit,unit);
-    ctx.fillRect(11*unit,27*unit,23*unit,unit);
-    ctx.fillRect(11*unit,28*unit,23*unit,unit);
-    ctx.fillRect(11*unit,29*unit,23*unit,unit);
-    ctx.fillRect(11*unit,30*unit,23*unit,unit);
+function startAnimation() {
+    requestId = requestAnimationFrame(animationLoop);
+}
+function animationLoop(timeStamp) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    changeDirection();
+    changeTransparency();
+    drawPanda(positionX,positionY,transparency);
+    requestId = requestAnimationFrame(animationLoop);
+
+}
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+function changeTransparency() {
+    if (isPositive == true) {
+        transparency += 0.01;
+    } else if (isPositive == false) {
+        transparency -= 0.01;
+    }
+}
+function changeDirection() {
+    if (transparency >= 1.0) {
+        isPositive = false;
+    } else if (transparency <= 0.0) {
+        isPositive = true;
+        const xMax = canvas.width / unit - 35;
+        const yMax = canvas.height / unit - 64;
+        positionX = getRandomInt(0, xMax);
+        positionY = getRandomInt(0, yMax);
+    }
 }

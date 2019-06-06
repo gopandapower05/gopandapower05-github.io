@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        var wall1;
+        var wall2;
+        var wall3;
+        var wall4;
+        var wall5;
+        var gamePiece;
+        var ctx;
+        const unit = 5;
+        function startGame() {
+            gameArea.start();
+            ctx = gameArea.context;
+            gamePiece = new luigi(0, 0);
+            wall1 = new wall(20, 30, 5, 40, "white");
+            wall2 = new wall(40, 20, 10, 40, "white");
+            wall3 = new wall(60, 50, 10, 50, "white");
+            wall4 = new wall(95, 6, 10, 60, "white");
+            wall5 = new wall(130, 30, 40, 70, "white");
+        }
+        var gameArea = {
+            canvas: document.createElement("canvas"),
+            start: function () {
+                this.canvas.width = 1000;
+                this.canvas.height = 500;
+                this.context = this.canvas.getContext("2d");
+                document.body.insertBefore(this.canvas, document.body.childNodes[4]);
+                this.interval = setInterval(updateGameArea, 20);
+                window.addEventListener('keydown', function (e) {
+                    gameArea.keys = (gameArea.keys || []);
+                    gameArea.keys[e.keyCode] = (e.type == "keydown");
+                })
+                window.addEventListener('keyup', function (e) {
+                    gameArea.keys[e.keyCode] = (e.type == "keydown");
+                })
+            },
+            clear: function () {
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            },
+            // stopping the game when the character touches the wall
+            stop: function () {
+                clearInterval(this.interval);
+            }
+        }
+        function updateGameArea() {
+            if (gamePiece.crashWith(wall1) || (gamePiece.crashWith(wall2)) || (gamePiece.crashWith(wall3)) || (gamePiece.crashWith(wall4)) || (gamePiece.crashWith(wall5))) {
+                gameArea.stop();
+            } else {
+                gameArea.clear();
+                drawBackground();
+                wall1.x += -1;
+                wall2.x -= 1;
+                wall3.x += 1;
+                wall4.x += -1;
+                wall5.x += -1;
+                wall1.update();
+                wall2.update();
+                wall3.update();
+                wall4.update();
+                wall5.update();
+                gamePiece.speedX = 0;
+                gamePiece.speedY = 0;
+                if (gameArea.keys && gameArea.keys[37]) {
+                    gamePiece.speedX = -1;
+                }
+                if (gameArea.keys && gameArea.keys[38]) {
+                    gamePiece.speedY = -1;
+                }
+                if (gameArea.keys && gameArea.keys[39]) {
+                    gamePiece.speedX = 1;
+                }
+                if (gameArea.keys && gameArea.keys[40]) {
+                    gamePiece.speedY = 1;
+                }
+                gamePiece.newPos();
+                gamePiece.update();
+            }
+        }
+        function luigi(x, y) {
+            this.gameArea = gameArea;
+            this.x = x;
+            this.y = y;
+            this.width = 12;
+            this.height = 16;
+            this.speedX = 0;
+            this.speedY = 0;
+            this.update = function () {
+                drawLuigi1(this.x, this.y);
+            }
+            this.newPos = function () {
+                this.x += this.speedX;
+                this.y += this.speedY;
+            }
+            //check if the character is touching the obstacle
+            this.crashWith = function (otherobj) {
+                var myLeft = this.x;
+                var myTop = this.y;
+                var myRight = this.x + this.width;
+                var myBottom = this.y + this.height;
+                var otherleft = otherobj.x;
+                var otherTop = otherobj.y;
+                var otherRight = otherobj.x + otherobj.w;
+                var otherBottom = otherobj.y + otherobj.h;
+                var crash = true;
+                if ((myRight < otherleft) || (myLeft > otherRight) || (myBottom < otherTop) || (myTop > otherBottom)) {
+                    crash = false;
+                }
+                return crash;
+            }
+        }
+        function drawBackground() {
+            ctx.fillStyle = "blue"
+            ctx.fillRect(0, 0, gameArea.canvas.width, gameArea.canvas.height);
+
+        }
+        function wall(x, y, w, h, colour) {
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+            this.update = function () {
+                ctx.fillStyle = colour
+                ctx.fillRect(this.x*unit, this.y*unit, this.w*unit, this.h*unit);
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="startGame()">
+    <header>
+        <h1>Games</h1>
+    </header>
+
+    <nav>
+        <div class="inner-container">
+            <a id="blog" class="rectangle" href="../index.html">Homepage</a>
+    </nav>
+    <section>
+
+    </section>
+    <footer>
+        <p>&copy; 2019</p>
+    </footer>
+    <script src="../drawing/luigi1.js"></script>
+</body>
+
+</html>
